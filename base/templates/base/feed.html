@@ -1,0 +1,52 @@
+{% extends 'main.html' %}
+{% load static %} {% block content %}
+<div class="body container ">
+    <div class="feed-body">
+        {% if "jpg" in rooms.image_feed.url or  "PNG" in rooms.image_feed.url %}
+        <img src=" {{ rooms.image_feed.url }} " alt="" />
+
+        {% elif "mp4" in rooms.image_feed.url %}
+        <video src="{{rooms.image_feed.url}}" autoplay loop></video>
+        {% endif %}
+    </div>
+    <div class="comment">
+        <div class="comment-header">
+            <div class="head-left">
+                <a href="" id="profile-pics"
+                  ><img src="{{ rooms.host.avatar.url }}" alt=""
+                /></a>
+                <a href="" id="profile-name">
+                  <p>{{rooms.host.username}}</p><span>. Following</span>
+                </a>
+              </div>
+              <div class="head-right">
+                <button id="btn">
+                  <img src=" {% static 'media/icons/option.png' %} " alt="" />
+                </button>
+              </div>
+        </div>
+        <div class="comment-body"></div>
+        <div class="comment-footer">
+            <p class="liked">
+                Liked by <strong><a href="#">hephzi</a></strong> and
+                <strong><a href="#">200 others</a></strong>
+              </p>
+              <p class="description">
+                <a href="">hephzi</a> I am chilling with the big boys
+              </p>
+              <a href="">View all comment</a>
+              <p>2 MINUTES AGO</p>
+            </div>
+            <form action="" id="comment" method="POST">
+              {% csrf_token %}
+              <input
+                type="text"
+                name="comment"
+                onkeyup="text()"
+                placeholder="Add a comment... "
+              /><input type="submit" value="Post" />
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

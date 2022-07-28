@@ -1,0 +1,38 @@
+{% load static %}
+<header>
+    <div class="logo">
+      <p>Instagram</p>
+    </div>
+    <div class="search">
+      <form action="">
+        <input type="text" placeholder="Search" name="q" />
+      </form>
+    </div>
+    <div class="nav-links">
+      <ul>
+        <li class="nav-item">
+          <a href="{% url 'home' %}"
+            ><i class="fa-solid fa-house fa-xl"></i
+          ></a>
+        </li>
+        <li class="nav-item">
+          <a href="#"
+            ><img src="{% static 'media/icons/messenger.png' %}" alt=""
+          /></a>
+        </li>
+        <li class="nav-item">
+          <a href="#"><i class="fa-regular fa-square-plus fa-xl"></i></a>
+        </li>
+        <li class="nav-item">
+          <a href="#"><i class="fa-regular fa-compass fa-xl"></i></a>
+        </li>
+        <li class="nav-item">
+          <a href="#"><i class="fa-regular fa-heart fa-xl"></i></a>
+        </li>
+        <li class="nav-item">
+          <a href=""><img src="{{ user.avatar.url }}" alt="Profile-pics"/></a>
+        </li>
+      </ul>
+    </div>
+  </header>
+  <hr />

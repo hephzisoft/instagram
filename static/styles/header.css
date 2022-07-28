@@ -1,0 +1,55 @@
+@font-face {
+  font-family: "grandistaregular";
+  src: url("grandista-webfont.woff2") format("woff2"),
+    url("grandista-webfont.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+header {
+  display: grid;
+  grid-template-columns: 1fr 1fr 2fr;
+   height:7vh; 
+  margin-top: 10px;
+  justify-items: center; 
+  margin-left: 10em;
+}
+
+.logo p {
+  font-family: "grandistaregular";
+  font-size: 1.5em;
+}
+
+.search input {
+  background-image: url("/static/media/icons/search.png");
+  background-repeat: no-repeat;
+  padding: 10px 40px;
+  background-position: 5% 50%;
+  border: none;
+  outline: none;
+  border-radius: 5px;
+  background-color: whitesmoke;
+  margin-left: 5em;
+}
+
+.nav-links ul {
+  display: flex;
+  gap: 20px;
+  list-style: none;
+  margin-top: 5px;
+}
+
+.nav-links .nav-item a {
+  color: black;
+}
+.nav-links .nav-item a img {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+}
+
+@media (max-width: 996px) {
+  header {
+    margin-left: 2em;
+  }
+}

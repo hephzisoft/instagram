@@ -1,0 +1,118 @@
+{% extends 'main.html' %}
+ {% load static %}
+  {% block content %}
+ {% include 'navbar.html' %}
+
+<main class="row">
+  <div class="col-lg-2"></div>
+
+  <div class="feeds col-lg-4">
+    {% for room in rooms %}
+    <div class="feed">
+      <div class="feed-header">
+        <div class="head-left">
+          <a href="" id="profile-pics"
+            ><img src="{{ room.host.avatar.url }}" alt=""
+          /></a>
+          <a href="" id="profile-name">
+            <p>{{room.host.username}}</p>
+          </a>
+        </div>
+        <div class="head-right">
+          <button id="btn">
+            <img src=" {% static 'media/icons/option.png' %} " alt="" />
+          </button>
+        </div>
+      </div>
+      <div class="feed-body">
+        {% if "jpg" in room.image_feed.url or  "PNG" in room.image_feed.url %}
+        <img src=" {{ room.image_feed.url }} " alt="" />
+
+        {% elif "mp4" in room.image_feed.url %}
+        <video src="{{room.image_feed.url}}" autoplay loop></video>
+        {% endif %}
+      </div>
+      <div class="feed-footer">
+        <div class="footer-left">
+          <svg
+            version="1.1"
+            width="24"
+            id="Capa_1"
+            xmlns="http://www.w3.org/2000/svg"
+            xmlns:xlink="http://www.w3.org/1999/xlink"
+            x="0px"
+            y="0px"
+            viewBox="0 0 544.582 544.582"
+            style="enable-background: new 0 0 544.582 544.582; fill: white"
+            xml:space="preserve"
+          >
+            <g>
+              <path
+                stroke="black"
+                stroke-width="50"
+                d="M448.069,57.839c-72.675-23.562-150.781,15.759-175.721,87.898C247.41,73.522,169.303,34.277,96.628,57.839
+                               C23.111,81.784-16.975,160.885,6.894,234.708c22.95,70.38,235.773,258.876,263.006,258.876
+                               c27.234,0,244.801-188.267,267.751-258.876C561.595,160.732,521.509,81.631,448.069,57.839z"
+              />
+            </g>
+          </svg>
+          <a href="{% url 'feed' room.id %}" id="comment"
+            ><img src="{% static 'media/icons/bubble-chat.png' %}" alt=""
+          /></a>
+          <a href="" id="send-to-friend"
+            ><img src=" {% static 'media/icons/send.png' %} " alt=""
+          /></a>
+        </div>
+        <div class="footer-right">
+          <svg
+            fill="#fff"
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+            width="24px"
+            height="24px"
+          >
+            <path
+              stroke="black"
+              stroke-width="2"
+              d="M 6 2 C 5.861875 2 5.7278809 2.0143848 5.5976562 2.0410156 C 4.686084 2.2274316 4 3.033125 4 4 L 4 22 L 12 19 L 20 22 L 20 4 C 20 3.8625 19.985742 3.7275391 19.958984 3.5976562 C 19.799199 2.8163086 19.183691 2.2008008 18.402344 2.0410156 C 18.272119 2.0143848 18.138125 2 18 2 L 6 2 z"
+            />
+          </svg>
+        </div>
+      </div>
+      <div class="feed-comment">
+        <p class="liked">
+          Liked by <strong><a href="#">hephzi</a></strong> and
+          <strong><a href="#">200 others</a></strong>
+        </p>
+        <p class="description">
+          <a href="">hephzi</a> I am chilling with the big boys
+        </p>
+        <a href="">View all comment</a>
+        <p>2 MINUTES AGO</p>
+      </div>
+      <form action="" id="comment" method="POST">
+        {% csrf_token %}
+        <input
+          type="text"
+          name="comment"
+          onkeyup="text()"
+          placeholder="Add a comment... "
+        /><input type="submit" value="Post" />
+      </form>
+    </div>
+    {% endfor %}
+  </div>
+
+  <div class="suggest col-lg-4">
+    <p>
+      Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nobis quae hic
+      dolores iusto minima iste, libero aut voluptatem quidem asperiores a nemo
+      perferendis mollitia repellendus reprehenderit magnam commodi voluptates
+      reiciendis atque explicabo expedita provident rerum. Dolore velit
+      aspernatur sint eius mollitia accusantium? Molestias neque perferendis
+      accusamus quidem labore animi hic?
+    </p>
+  </div>
+  <div class="col-lg-2"></div>
+</main>
+{% endblock %}
