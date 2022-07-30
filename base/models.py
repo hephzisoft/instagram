@@ -12,11 +12,12 @@ class User(AbstractUser):
 
 
 class Feed(models.Model):
-    host  = models.ForeignKey(User, on_delete=models.CASCADE)
+    user  = models.ForeignKey(User, on_delete=models.CASCADE)
     image_feed = models.FileField(upload_to="upload")
     description = models.TextField()
     updated = models.DateTimeField(auto_now=True)
     created = models.DateTimeField(auto_now_add=True)
+    likes = models.IntegerField(default=0)
 
 
     
@@ -27,5 +28,15 @@ class Feed(models.Model):
     def __str__(self):
         return self.description[0:50]
 
-class Comment(models.Model):
-    feed = models.ForeignKey(Feed,on_delete=models.CASCADE)
+# class Comment(models.Model):
+#     feed = models.ForeignKey(Feed,on_delete=models.CASCADE)
+#     comment = models.ManyToManyField(User, related_name='comment')
+#     comment_body = models.TextField(null=True)
+
+
+class Like(models.Model):
+    feed = models.ForeignKey(Feed, on_delete=models.CASCADE, related_name='feed_likes')
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='user_likes')
+
+    def __str__(self):
+        return self.feed.description[0:50]

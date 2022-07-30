@@ -32,6 +32,11 @@ main {
   display: flex;
   gap: 350px;
 }
+form .post-btn {
+  background-color: transparent;
+  outline: none;
+  border: none;
+}
 
 .head-left {
   display: flex;

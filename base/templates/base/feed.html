@@ -13,10 +13,10 @@
         <div class="comment-header">
             <div class="head-left">
                 <a href="" id="profile-pics"
-                  ><img src="{{ rooms.host.avatar.url }}" alt=""
+                  ><img src="{{ rooms.user.avatar.url }}" alt=""
                 /></a>
                 <a href="" id="profile-name">
-                  <p>{{rooms.host.username}}</p><span>. Following</span>
+                  <p>{{rooms.user.username}}</p><span>. Following</span>
                 </a>
               </div>
               <div class="head-right">
@@ -29,7 +29,7 @@
         <div class="comment-footer">
             <p class="liked">
                 Liked by <strong><a href="#">hephzi</a></strong> and
-                <strong><a href="#">200 others</a></strong>
+                <strong><a href="#">{{rooms.likes}} others</a></strong>
               </p>
               <p class="description">
                 <a href="">hephzi</a> I am chilling with the big boys
