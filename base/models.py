@@ -1,6 +1,6 @@
 
 from django.db import models
-
+import uuid
 from django.contrib.auth.models import AbstractUser
 
 
@@ -15,6 +15,7 @@ class Feed(models.Model):
     user  = models.ForeignKey(User, on_delete=models.CASCADE)
     image_feed = models.FileField(upload_to="upload")
     description = models.TextField()
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     updated = models.DateTimeField(auto_now=True)
     created = models.DateTimeField(auto_now_add=True)
     likes = models.IntegerField(default=0)

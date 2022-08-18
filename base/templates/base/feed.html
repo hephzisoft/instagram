@@ -2,21 +2,21 @@
 {% load static %} {% block content %}
 <div class="body container ">
     <div class="feed-body">
-        {% if "jpg" in rooms.image_feed.url or  "PNG" in rooms.image_feed.url %}
-        <img src=" {{ rooms.image_feed.url }} " alt="" />
+        {% if "jpg" in post.image_feed.url or  "PNG" in post.image_feed.url %}
+        <img src=" {{ post.image_feed.url }} " alt="" />
 
-        {% elif "mp4" in rooms.image_feed.url %}
-        <video src="{{rooms.image_feed.url}}" autoplay loop></video>
+        {% elif "mp4" in post.image_feed.url %}
+        <video src="{{post.image_feed.url}}" autoplay loop></video>
         {% endif %}
     </div>
     <div class="comment">
         <div class="comment-header">
             <div class="head-left">
                 <a href="" id="profile-pics"
-                  ><img src="{{ rooms.user.avatar.url }}" alt=""
+                  ><img src="{{ post.user.avatar.url }}" alt=""
                 /></a>
                 <a href="" id="profile-name">
-                  <p>{{rooms.user.username}}</p><span>. Following</span>
+                  <p>{{post.user.username}}</p><span>. Following</span>
                 </a>
               </div>
               <div class="head-right">
@@ -29,7 +29,7 @@
         <div class="comment-footer">
             <p class="liked">
                 Liked by <strong><a href="#">hephzi</a></strong> and
-                <strong><a href="#">{{rooms.likes}} others</a></strong>
+                <strong><a href="#">{{post.likes}} others</a></strong>
               </p>
               <p class="description">
                 <a href="">hephzi</a> I am chilling with the big boys

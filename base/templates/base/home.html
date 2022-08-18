@@ -7,15 +7,15 @@
   <div class="col-lg-2"></div>
 
   <div class="feeds col-lg-4">
-    {% for room in rooms %}
+    {% for post in posts %}
     <div class="feed">
       <div class="feed-header">
         <div class="head-left">
           <a href="" id="profile-pics"
-            ><img src="{{ room.user.avatar.url }}" alt=""
+            ><img src="{{ post.user.avatar.url }}" alt=""
           /></a>
           <a href="" id="profile-name">
-            <p>{{room.user.username}}</p>
+            <p>{{post.user.username}}</p>
           </a>
         </div>
         <div class="head-right">
@@ -25,16 +25,16 @@
         </div>
       </div>
       <div class="feed-body">
-        {% if "jpg" in room.image_feed.url or "PNG" in room.image_feed.url %}
-        <img src=" {{ room.image_feed.url }} " alt="" />
+        {% if "jpg" in post.image_feed.url or "PNG" in post.image_feed.url %}
+        <img src=" {{ post.image_feed.url }} " alt="" />
 
-        {% elif "mp4" in room.image_feed.url %}
-        <video src="{{room.image_feed.url}}" autoplay loop></video>
+        {% elif "mp4" in post.image_feed.url %}
+        <video src="{{post.image_feed.url}}" autoplay loop></video>
         {% endif %}
       </div>
       <div class="feed-footer">
         <div class="footer-left">
-          <a href="{% url 'like' room.id %}">
+          <a href="{% url 'like' post.id %}">
             <svg
               version="1.1"
               width="24"
@@ -58,7 +58,7 @@
               </g>
             </svg>
           </a>
-          <a href="{% url 'feed' room.id %}" id="comment"
+          <a href="{% url 'feed' post.id %}" id="comment"
             ><img src="{% static 'media/icons/bubble-chat.png' %}" alt=""
           /></a>
           <a href="" id="send-to-friend"
@@ -66,7 +66,7 @@
           /></a>
         </div>
         <div class="footer-right">
-          <a href="" value{{room.id}}>
+          <a href="" value{{post.id}}>
             <svg
               fill="#fff"
               xmlns="http://www.w3.org/2000/svg"
@@ -86,7 +86,7 @@
       <div class="feed-comment">
         <p class="liked">
           Liked by <strong><a href="#">hephzi</a></strong> and
-          <strong><a href="#">{{room.likes}} others</a></strong>
+          <strong><a href="#">{{post.likes}} others</a></strong>
         </p>
         <p class="description">
           <a href="">hephzi</a> I am chilling with the big boys
